@@ -1,3 +1,3 @@
 TEMPLATE += app
-QT += gui quick
+QT += gui quick widgets
 SOURCES += win.cpp
