@@ -36,5 +36,15 @@ GridLayout {
     Layout.fillHeight: true
     fillMode: Image.PreserveAspectFit
     asynchronous: true
+
+    MouseArea {
+      anchors.fill: parent
+      acceptedButtons: Qt.RightButton
+      onClicked: {
+        image.visible = false
+        image.source = ''
+        button.visible = true
+      }
+    }
   }
 }
