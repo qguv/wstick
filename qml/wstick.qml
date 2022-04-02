@@ -3,48 +3,60 @@ import QtQuick.Controls 2.4
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.11
 
-GridLayout {
+Item {
+  id: root
   anchors.fill: parent
 
-  ToolButton {
-    id: button
-    Layout.alignment: Qt.AlignCenter
-    Layout.fillWidth: true
-    Layout.fillHeight: true
-    text: qsTr("Open")
-    icon.name: "document-open"
-    onClicked: fileOpenDialog.open()
+  Component.onCompleted: {
+    if (Qt.application.arguments[1]) {
+      image.source = Qt.resolvedUrl("file:" + Qt.application.arguments[1])
+    }
+  }
+
+  GridLayout {
+    anchors.fill: parent
+
+    Button {
+      id: button
+      Layout.alignment: Qt.AlignCenter
+      Layout.fillWidth: true
+      Layout.fillHeight: true
+      text: qsTr("Open")
+      icon.name: "document-open"
+      onClicked: dialog.open()
+    }
+
+    Image {
+      id: image
+      visible: false
+      Layout.fillWidth: true
+      Layout.fillHeight: true
+      fillMode: Image.PreserveAspectFit
+      asynchronous: true
+
+      onStatusChanged: {
+        var ready = image.status == Image.Ready
+        image.visible = ready
+        button.visible = !ready
+      }
+
+    }
   }
 
   FileDialog {
-    id: fileOpenDialog
+    id: dialog
     title: "Select an image file"
     nameFilters: [
       "Image files (*.png *.jpeg *.jpg)",
     ]
-    onAccepted: {
-      image.source = fileOpenDialog.fileUrl
-      button.visible = false
-      image.visible = true
-    }
+    onAccepted: image.source = dialog.fileUrl
   }
 
-  Image {
-    id: image
-    visible: false
-    Layout.fillWidth: true
-    Layout.fillHeight: true
-    fillMode: Image.PreserveAspectFit
-    asynchronous: true
-
-    MouseArea {
-      anchors.fill: parent
-      acceptedButtons: Qt.RightButton
-      onClicked: {
-        image.visible = false
-        image.source = ''
-        button.visible = true
-      }
+  MouseArea {
+    anchors.fill: parent
+    acceptedButtons: Qt.RightButton
+    onClicked: {
+      image.source = ""
     }
   }
 }
