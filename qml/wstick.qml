@@ -15,4 +15,11 @@ Item {
       y: 50
     }
   }
+
+  Image {
+    id: image
+    anchors.fill: parent
+    fillMode: Image.PreserveAspectFit
+    asynchronous: true
+  }
 }
