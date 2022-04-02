@@ -1,8 +1,11 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4
 import QtQuick.Dialogs 1.2
+import QtQuick.Layouts 1.11
 
-Item {
+GridLayout {
+  anchors.fill: parent
+
   ToolBar {
     id: toolbar
     Flow {
@@ -29,6 +32,8 @@ Item {
   }
 
   Image {
+    Layout.fillWidth: true
+    Layout.fillHeight: true
     id: image
     fillMode: Image.PreserveAspectFit
     asynchronous: true
