@@ -1,4 +1,4 @@
 TEMPLATE += app
 QT += gui quick widgets
-SOURCES += src/win.cpp
+SOURCES += src/wstick.cpp
 RESOURCES += meta/resource.qrc

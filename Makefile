@@ -1,4 +1,4 @@
-BINARY=win
+BINARY=wstick
 BUILD_DIR=obj
 META_DIR=meta
 

@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     v.setFlags(Qt::FramelessWindowHint);
 
-    v.setSource(QUrl("qrc:qml/draw_rectangles.qml"));
+    v.setSource(QUrl("qrc:qml/wstick.qml"));
 
     v.show();
 
