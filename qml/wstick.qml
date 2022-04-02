@@ -6,35 +6,34 @@ import QtQuick.Layouts 1.11
 GridLayout {
   anchors.fill: parent
 
-  ToolBar {
-    id: toolbar
-    Flow {
-      anchors.fill: parent
-      ToolButton {
-        text: qsTr("Open")
-        icon.name: "document-open"
-        onClicked: fileOpenDialog.open()
-      }
-    }
+  ToolButton {
+    id: button
+    Layout.alignment: Qt.AlignCenter
+    Layout.fillWidth: true
+    Layout.fillHeight: true
+    text: qsTr("Open")
+    icon.name: "document-open"
+    onClicked: fileOpenDialog.open()
   }
 
   FileDialog {
     id: fileOpenDialog
     title: "Select an image file"
-    folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
     nameFilters: [
       "Image files (*.png *.jpeg *.jpg)",
     ]
     onAccepted: {
       image.source = fileOpenDialog.fileUrl
-      toolbar.visible = false
+      button.visible = false
+      image.visible = true
     }
   }
 
   Image {
+    id: image
+    visible: false
     Layout.fillWidth: true
     Layout.fillHeight: true
-    id: image
     fillMode: Image.PreserveAspectFit
     asynchronous: true
   }
