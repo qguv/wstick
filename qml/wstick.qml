@@ -40,6 +40,12 @@ Item {
         button.visible = !ready
       }
 
+      MouseArea {
+        anchors.fill: parent
+        onClicked: {
+          image.mirror = !image.mirror
+        }
+      }
     }
   }
 
