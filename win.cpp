@@ -1,5 +1,5 @@
 #include <QApplication>
-#include <QDeclarativeView>
+#include <QQuickView>
 #include <QMainWindow>
 
 int main(int argc, char *argv[])
@@ -7,10 +7,10 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QMainWindow window;
 
-    QDeclarativeView* v = new QDeclarativeView;
+    QQuickView* v = new QQuickView;
     window.setCentralWidget(v);
 
-    v->setSource(QUrl::fromLocalFile(("draw_rectangles.qml")));   
+    v->setSource(QUrl::fromLocalFile(("draw_rectangles.qml")));
 
     window.setStyleSheet("background:transparent;");
     window.setAttribute(Qt::WA_TranslucentBackground);

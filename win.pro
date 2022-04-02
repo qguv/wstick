@@ -1,3 +1,3 @@
 TEMPLATE += app
-QT += gui declarative
+QT += gui quick
 SOURCES += win.cpp
