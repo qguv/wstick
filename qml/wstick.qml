@@ -24,6 +24,7 @@ Item {
     ]
     onAccepted: {
       image.source = fileOpenDialog.fileUrl
+      toolbar.visible = false
     }
   }
 
