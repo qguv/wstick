@@ -1,24 +1,10 @@
-import QtQuick 2.3
-import QtQuick.Controls 2.12
-import Qt.labs.platform 1.1
+import QtQuick 2.0
+import QtQuick.Controls 2.4
+import QtQuick.Dialogs 1.2
 
 Item {
-  Rectangle {
-    color: "red"
-    height: 100
-    width: 100
-    opacity: 0.5
-
-    Rectangle {
-      color: "blue"
-      height: 100
-      width: 100
-      x: 50
-      y: 50
-    }
-  }
-
   ToolBar {
+    id: toolbar
     Flow {
       anchors.fill: parent
       ToolButton {
@@ -43,7 +29,6 @@ Item {
 
   Image {
     id: image
-    anchors.fill: parent
     fillMode: Image.PreserveAspectFit
     asynchronous: true
   }
